@@ -1,13 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppService } from './app.service';
-import { DogsService } from './dogs/dogs.service';
 import { GiraffeService } from './giraffe/giraffe.service';
 import { ConfigModule } from '@nestjs/config';
-import { DogsModule } from './dogs/dogs.module';
 import { DatabaseModule } from './database/database.module';
 import { TodosService } from './todo/todo.service';
 import { TodoModule } from './todo/todo.module';
-
+import { ModuleService } from './controller/module/module.service';
+import { GiraffeModule } from './giraffe/giraffe.module';
 import * as Joi from 'joi';
 
 
@@ -24,8 +23,8 @@ import * as Joi from 'joi';
         PORT: Joi.number(),
       }),
     }),
-  TodoModule,DatabaseModule],
+  TodoModule,DatabaseModule, GiraffeModule],
   controllers: [],
-  providers: [AppService],
+  providers: [AppService, ModuleService],
 })
 export class AppModule { }
